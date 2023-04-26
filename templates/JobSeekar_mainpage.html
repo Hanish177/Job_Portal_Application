@@ -1,0 +1,27 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href ="{% static 'styles/Manager_mainpage.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="button-container">
+        <button class="create-job-btn" data-url="{% url 'Job_Available'  %}" onclick="redirect(this)">Job Available</button>
+        <button class="dashboard-btn" data-url="{% url 'User_dashboard_url' %}" onclick="redirect(this)"> My Dashboard</button>
+        <button class="edit-job-btn" data-url="{% url 'User_edit_profile_url' %}" onclick="redirect(this)">My profile</button>
+      </div>
+      <div class="info-container">
+      </div>
+      
+</body>
+<script>
+    function redirect(button) {
+        var url = button.getAttribute("data-url");
+        window.location.href = url;
+    }
+</script>
+</html>

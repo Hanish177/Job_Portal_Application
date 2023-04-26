@@ -1,0 +1,34 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job available</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{%static 'styles/Manager_dashboard.css'%}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="job-list">
+    {% for dis in dis %}
+    
+    <li>
+        <div class="job-item">
+            <h3 class="job-role"> Applied email ID :{{ dis.apply_email }} </h3>
+            <p class="job-description"> Role Applied :{{ dis.apply_role }}</p>
+            <p class="job-experience">User Description about Job :{{ dis.apply_des }}</p>
+            
+            
+            
+                
+          </div>
+    </li>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% load static %}
+<html>
+    <head>
+        <title> Signup form</title>
+        <link rel = "stylesheet" href ="{% static 'styles/Logstyle.css' %}">
+    </head>
+    <body>
+        <div class = "hero">
+           <div class = "form-box">
+            <div class="button-box">
+                <div id ="btn">
+
+                </div>
+                <button type ="button" class ="toggle-btn" onclick="Seeker()" > Job Seeker </button>
+                <button type ="button" class ="toggle-btn" onclick="Manager()"> Hiring Manager</button>
+            </div>
+           
+        <form id = "Seeker" class ="input-group" action="loginSeeker" method="post">
+            {% csrf_token %}
+            <h2>Welcome Back!</h2>
+            <h4>Find the right job for you!</h4>
+            <br>
+            <input name="email" type ="text" class ="input-field" placeholder="Email ID">
+            <input name ="password" type ="password" class ="input-field" placeholder="Enter Password">
+            <br>
+            <br>
+            <button type ="submit" class="submit-btn">Submit</button>
+            <br>
+            <br>
+            <h5 style="text-align: center;">Don't have an account? Click <a href ="{% url 'signup_form' %}">here</a></h5>
+        
+
+        </form>
+        <form id ="Manager" class ="input-group" action="loginManager" method="post">
+            {% csrf_token %}
+            <h2>Welcome Back!</h2>
+            <h4>Find the right talent for you!</h4>
+            <br>
+            <input name ="email" type ="email" class ="input-field" placeholder="Email ID">
+            <input name = "password" type ="password" class ="input-field" placeholder="Enter Password">
+            <br>
+            <br>
+        
+            <button type ="submit" class="submit-btn">Submit</button>
+            <br>
+            <br>
+            <h5 style="text-align: center;">Don't have an account? Click <a href =" {% url 'signup_form' %}">here</a></h5>
+
+        
+
+        </form>
+    </div>  
+    </div>
+    <script>
+        var x = document.getElementById("Seeker");
+        var y = document.getElementById("Manager");
+        var z = document.getElementById("btn");
+        function Manager(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "100px";
+    
+        }
+        function Seeker(){
+            y.style.left = "-400px";
+            x.style.left = "50px";
+            z.style.left = "0";
+    
+        }
+    
+    </script>
+
+    </body>
+    </html>

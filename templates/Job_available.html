@@ -1,0 +1,46 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job available</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{%static 'styles/Job_available.css'%}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="job-list">
+    {% for job in jobs %}
+    <li>
+        <div class="job-item">
+            <h3 class="job-role">{{ job.recruit_role }}</h3>
+            <p class="job-company">Company Name :{{ job.recruit_company }}</p>
+            <p class="job-description">Job description :{{ job.job_description }}</p>
+            <p class="job-experience">Job experience :{{ job.experience }}</p>
+            
+                <button id="apply-button-" data-url="{% url 'apply' cname=job.recruit_company  crole=job.recruit_role %}"class="apply-button" onclick="redirect(this)">Apply Now</button>
+                
+          </div>
+    </li>
+    {% endfor %}
+</div>
+
+</body>
+<script>
+  function redirect(button) {
+    var url = button.getAttribute("data-url");
+    window.location.href = url;
+}
+
+        
+        // Disable the button
+       // button.disabled = true;
+        
+        // Update the job status in MongoDB using Django and Mongoengine
+        // You will need to write the necessary Django and Mongoengine code to update the status
+      
+</script>
+</html>

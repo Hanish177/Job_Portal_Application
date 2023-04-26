@@ -1,0 +1,63 @@
+{%load static%}
+<html>
+    <head>
+        <title> Signup form</title>
+        <link rel = "stylesheet" href ="{% static 'styles/Regstyle.css'%}">
+    </head>
+    <body>
+        <div class = "hero">
+           <div class = "form-box">
+            <div class="button-box">
+                <div id ="btn">
+
+                </div>
+                <button type ="button" class ="toggle-btn" onclick="Seeker()" > Job Seeker </button>
+                <button type ="button" class ="toggle-btn" onclick="Manager()"> Hiring Manager</button>
+            </div>
+           
+        <form id = "Seeker" class ="input-group" action="SignupSeeker" method="post">
+            {% csrf_token %}
+            <h2>Get the right job for you!</h2>
+            <input name="username" type ="text" class ="input-field" placeholder="User Name">
+            <input name="email" type ="text" class ="input-field" placeholder="Email ID">
+            <input name="password" type ="password" class ="input-field" placeholder="Enter Password">
+            <input type="checkbox" class = "check-box"> <span>I agree to the terms and conditions</span>
+            <button type ="submit" class="submit-btn">Create Account</button>
+        
+
+        </form>
+        <form id ="Manager" class ="input-group" action="SigupManager" method="post">
+            {% csrf_token %}
+            <h2>Get the right talent for you!</h2>
+            <input name ="email" type ="text" class ="input-field" placeholder="Email ID">
+            <input name ="password" type ="password" class ="input-field" placeholder="Enter Password">
+            <input name="role" type ="text" class ="input-field" placeholder="Your Role">
+            <input name="company_name" type ="text" class ="input-field" placeholder="Company Name">
+            <input type="checkbox" class = "check-box"> <span>I agree to the terms and conditions</span>
+            <button type ="submit" class="submit-btn">Create Account</button>
+        
+
+        </form>
+    </div>  
+    </div>
+    <script>
+        var x = document.getElementById("Seeker");
+        var y = document.getElementById("Manager");
+        var z = document.getElementById("btn");
+        function Manager(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "100px";
+    
+        }
+        function Seeker(){
+            y.style.left = "-400px";
+            x.style.left = "50px";
+            z.style.left = "0";
+    
+        }
+    
+    </script>
+
+    </body>
+    </html>

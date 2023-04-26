@@ -1,0 +1,29 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href ="{% static 'styles/create_job.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/createJob">
+        {% csrf_token %}
+        <label for="company">Company Name:</label>
+        <input type="text" id="role" name="cname" value="{{cname}}" required><br><br>
+
+        <label for="role">Recruit Role:</label>
+        <input type="text" id="role" name="role" required><br><br>
+      
+        <label for="description">Job Description:</label>
+        <textarea id="description" name="description" required></textarea><br><br>
+      
+        <label for="experience">Experience:</label>
+        <input type="text" id="experience" name="experience" required><br><br>
+      
+        <input type="submit" value="Submit">
+      </form>
+</body>
+</html>

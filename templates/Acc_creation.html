@@ -1,0 +1,74 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Progressive Form</title>
+	<link rel = "stylesheet" href ="{% static 'styles/Accstyle.css' %}">
+	
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="form_wrap">
+		<div class="form_1 data_info">
+			<h2>Let's setup your account!</h2>
+			<form action="accCreate" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form_container">
+                    <div class="input_wrap">
+						<label for="Fullname">Your Full name</label>
+						<input type="text" name="fullname" class="input" id="Fullname">
+					</div>
+					<div class="input_wrap">
+						<label for="location">Where are you based?</label>
+						<input type="text" name="location" class="input" id="location">
+					</div>
+					<div class="input_wrap">
+						<label for="Role">Your current role</label>
+						<input type="text" name="Role" class="input" id="Role">
+					</div>
+					<div class="input_wrap">
+						<label for="experience">How many years of experience do you have?</label>
+						<input type="text" name="experience" class="input" id="experience">
+					</div>
+					<div class="input_wrap">
+						<label for="education">Your education</label>
+						<input type="text" name="education" class="input" id="education">
+					</div>
+                    <div class="input_wrap">
+						<label for="Jobtype">Which Job type are you interested in?</label>
+                        <input type="radio" id="Fulltime" name="Jobtype" value="Fulltime">
+                        <label for="Fulltime">Full time</label><br>
+                        <input type="radio" id="Partime" name="Jobtype" value="Partime">
+                        <label for="Partime">Part time</label><br>
+                        <input type="radio" id="Intern" name="Jobtype" value="Intern">
+                        <label for="Intern">Intern</label>
+
+					</div>
+					<div class="form_container">
+						<div class="input_wrap">
+							<label for="resume">Upload your resume</label><br>
+							<input type="file" id="myfile" name="myfile">
+							<input type="hidden" name="email" value="{{ request.POST.email }}">
+							<input  type="submit">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal_wrapper">
+	<div class="shadow"></div>
+	<div class="success_wrap">
+		<span class="modal_icon"><ion-icon name="checkmark-sharp"></ion-icon></span>
+		<p>Your account has been created!</p>
+	</div>
+</div>
+
+
+
+</body>
+</html>

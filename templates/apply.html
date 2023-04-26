@@ -1,0 +1,26 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Application Form</title>
+  <link rel="stylesheet" href="{% static 'styles/apply.css'%}">
+</head>
+<body>
+  <form action="/apply/<str:cname>/<str:crole>/Jobsapp" method="post">
+    {% csrf_token %}
+    <h2>Job Application Form</h2>
+    
+    <label for="name">Company Name:</label>
+    <input type="text" id="name" name="name"value="{{cname}}"required>
+    
+    <label for="email">Role:</label>
+    <input type="text" id="role" name="role" value="{{crole}}" required>
+    
+    <label for="cover-letter">Why should you want this job?</label>
+    <textarea id="cover-letter" name="cover-letter" required></textarea>
+
+    <button type="submit" class="uni" >Apply</button>
+  </form>
+</body>
+</html>
