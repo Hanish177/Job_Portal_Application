@@ -3,6 +3,7 @@ from job_portal.models import *
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from mongoengine import Q 
 import os
 jemail=None
@@ -19,15 +20,22 @@ def signup(request):
     return render(request,"Signup_form.html")
 
 def loginSeeker(request):
-    email=request.POST['email']
-    password=request.POST['password']
-    user_email=userDetails.objects.get(email=email)
-    user_password=userDetails.objects.get(password=password)
+    uemail=request.POST['email']
+    upassword=request.POST['password']
+    try:
+        user_email=userDetails.objects.get(email=uemail)
+    except userDetails.DoesNotExist:
+        return HttpResponse ("username does not exist")
+    try:
+        user_password=userDetails.objects.get(password=upassword)
+    except userDetails.DoesNotExist:
+        return HttpResponse ("password does not exist")
+    
     if(user_email == None or user_password == None):
         return render(request,'Login_form.html')
     else:
         global jemail 
-        jemail = user_email.email
+        jemail = user_email
         return render(request,'JobSeekar_mainpage.html')
     
 def loginManager(request):

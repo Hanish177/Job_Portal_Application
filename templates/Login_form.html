@@ -4,6 +4,24 @@
         <title> Signup form</title>
         <link rel = "stylesheet" href ="{% static 'styles/Logstyle.css' %}">
     </head>
+    <script type="text/javascript">
+        function validate(){
+            var email=document.log_form.email.value;
+            var password=document.log_form.password.value;
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;  
+            var passw=  /^[A-Za-z]\w{7,14}$/;
+            //window.alert(conpassword);
+            if (!filter.test(email)) {
+                window.alert('Please provide a valid email address');
+                //email.focus;
+                return false;
+            }
+            if(!passw.test(password)){
+                window.alert("password between 7 to 16 characters which contain only characters, numeric digits, underscore and first character must be a letter");
+                return false;
+            }
+        }
+    </script>
     <body>
         <div class = "hero">
            <div class = "form-box">
@@ -15,23 +33,23 @@
                 <button type ="button" class ="toggle-btn" onclick="Manager()"> Hiring Manager</button>
             </div>
            
-        <form id = "Seeker" class ="input-group" action="loginSeeker" method="post">
+        <form id = "Seeker" name="log_form" onsubmit="return validate()"class ="input-group" action="loginSeeker" method="post">
             {% csrf_token %}
             <h2>Welcome Back!</h2>
             <h4>Find the right job for you!</h4>
             <br>
-            <input name="email" type ="text" class ="input-field" placeholder="Email ID">
+            <input name="email" type ="email" class ="input-field" placeholder="Email ID">
             <input name ="password" type ="password" class ="input-field" placeholder="Enter Password">
             <br>
             <br>
-            <button type ="submit" class="submit-btn">Submit</button>
+            <input class="submit-btn" name="submit" id="submit" tabindex="5" value="Sign Up" type="submit" required>
             <br>
             <br>
             <h5 style="text-align: center;">Don't have an account? Click <a href ="{% url 'signup_form' %}">here</a></h5>
         
 
         </form>
-        <form id ="Manager" class ="input-group" action="loginManager" method="post">
+        <form id ="Manager" class ="input-group" name="log_form" onsubmit="return validate()" action="loginManager" method="post">
             {% csrf_token %}
             <h2>Welcome Back!</h2>
             <h4>Find the right talent for you!</h4>
@@ -40,8 +58,7 @@
             <input name = "password" type ="password" class ="input-field" placeholder="Enter Password">
             <br>
             <br>
-        
-            <button type ="submit" class="submit-btn">Submit</button>
+            <input class="submit-btn" name="submit" id="submit" tabindex="5" value="Sign Up" type="submit" required><button type ="submit" class="submit-btn">Submit</button>
             <br>
             <br>
             <h5 style="text-align: center;">Don't have an account? Click <a href =" {% url 'signup_form' %}">here</a></h5>
